@@ -497,3 +497,11 @@ def test_prm_scopes_passes_when_scope_is_covered(router):
     check = by_id(diagnose(MCP), "prm-scopes")
     assert check.status == PASS
     assert "mcp:read" in check.evidence["scopes_supported"]
+
+
+def test_prm_scopes_ignores_non_string_entries(router):
+    """A malformed scopes_supported entry must not crash the whole diagnostic."""
+    mount(router, prm_extra={"scopes_supported": ["mcp:read", ["nested"], 5]})
+    check = by_id(diagnose(MCP), "prm-scopes")
+    assert check.status == PASS
+    assert check.evidence["scopes_supported"] == ["mcp:read", ["nested"], 5]

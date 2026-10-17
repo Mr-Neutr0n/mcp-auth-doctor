@@ -433,7 +433,11 @@ class _Diagnosis:
             )
         else:
             challenge_scopes = set(self.challenge_scope.split())
-            supported_set = set(scopes_supported) if isinstance(scopes_supported, list) else set()
+            supported_set = (
+                {s for s in scopes_supported if isinstance(s, str)}
+                if isinstance(scopes_supported, list)
+                else set()
+            )
             missing = challenge_scopes - supported_set
             if missing:
                 self.add(
