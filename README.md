@@ -325,7 +325,7 @@ By default the tool only reads: one unauthenticated `initialize`, metadata `GET`
 ## Roadmap
 
 - Checks for `bearer_methods_supported` and HTTPS on every endpoint (see [docs/good-first-issues.md](docs/good-first-issues.md)).
-- Markdown output for pasting into issues, and extra request headers for servers behind access proxies.
+- Extra request headers for servers behind access proxies.
 - Recording real server exchanges as fixtures so a reported failure can be replayed in the test suite.
 - A `--client-metadata-url` mode for `--login` on servers that support Client ID Metadata Documents, once a hosted document is available.
 
